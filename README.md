@@ -18,7 +18,7 @@ A simple small Obsidian plugin for attaching custom CSS classes to the Obsidian 
 
 ### Manual
 
-1. Download the `main.js` and `manifest.json` from the [Releases](https://github.com/draggonfantasy/obsidian-bases-styled-columns/releases) page.
+1. Download the `main.js` and `manifest.json` from the [Releases](https://github.com/DraggonFantasy/bases-styled-columns/releases) page.
 2. Put them to `<your vault>/.obsidian/plugins/bases-styled-columns/`.
 3. Restart Obsidian or click "refresh" button in the "Community plugins" tab in the settings.
 
