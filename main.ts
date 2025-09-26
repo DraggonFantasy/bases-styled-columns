@@ -24,7 +24,7 @@ function decorateBase(root: HTMLElement, settings: BasesStyledColumnsSettings) {
 	const timeStart = Date.now();
 
 	settings.columns.forEach(column => {
-		console.log(`Decorating ${column.dataProperty} with mode ${column.mode}`);
+		// console.log(`Decorating ${column.dataProperty} with mode ${column.mode}`);
 		root.querySelectorAll(`div.bases-td[data-property='${column.dataProperty}']`).forEach((el: any) => {
 			const childInput = el.querySelector("input");
 
@@ -73,9 +73,7 @@ export default class BasesStyledColumns extends Plugin {
 	settings: BasesStyledColumnsSettings;
 
 	async onload() {
-		console.log(this.settings)
 		await this.loadSettings();
-		console.log(this.settings)
 		this.addSettingTab(new SampleSettingTab(this.app, this));
 
 		this.registerEvent(
