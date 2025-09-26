@@ -12,7 +12,7 @@ export interface BasesStyledColumnsSettings {
 }
 
 export const DEFAULT_SETTINGS: BasesStyledColumnsSettings = {
-	cssClassPrefix: 'obsc-',
+	cssClassPrefix: 'base-styled-',
     debounceTime: 500,
 	columns: [
 		{

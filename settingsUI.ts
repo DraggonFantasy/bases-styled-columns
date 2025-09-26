@@ -133,36 +133,55 @@ export class SampleSettingTab extends PluginSettingTab {
 
 function createHelpDocumentFragment() {
 	const helpFragment = document.createDocumentFragment();
-
+	
 	const title = document.createElement('div');
 	title.style.fontWeight = '600';
 	title.style.marginBottom = '8px';
 	title.textContent = 'Function body that returns array of CSS classes.';
-
+	
+	const warningBox = document.createElement('div');
+	warningBox.style.border = '1px solid red';
+	warningBox.style.borderRadius = '4px';
+	warningBox.style.padding = '8px';
+	warningBox.style.marginBottom = '12px';
+	
+	const warningTitle = document.createElement('div');
+	warningTitle.style.fontWeight = '600';
+	warningTitle.style.marginBottom = '4px';
+	warningTitle.innerHTML = '\u26A0 Security Warning';
+	
+	const warningText = document.createElement('div');
+	warningText.innerHTML = 'Only paste JavaScript code from trusted sources. Malicious code can access your data, make network requests, or perform other harmful actions.';
+	
+	warningBox.appendChild(warningTitle);
+	warningBox.appendChild(warningText);
+	
 	const availableVars = document.createElement('div');
 	availableVars.style.marginBottom = '12px';
 	availableVars.innerHTML = '<strong>Available variables:</strong>';
-
+	
 	const varList = document.createElement('ul');
 	varList.style.margin = '4px 0';
 	varList.style.paddingLeft = '20px';
-
+	
 	const elVar = document.createElement('li');
 	elVar.innerHTML = '<code>el</code>: the DOM element of the Base cell';
+	
 	const valueVar = document.createElement('li');
 	valueVar.innerHTML = '<code>value</code>: the value of the property';
-
+	
 	varList.appendChild(elVar);
 	varList.appendChild(valueVar);
-
+	
 	const requirement = document.createElement('div');
 	requirement.style.fontStyle = 'italic';
-	requirement.style.color = 'var(--text-muted)';
 	requirement.innerHTML = `The function must return array of CSS classes, each class name starts with literal "<code>$PREFIX-</code>"`;
-
+	
 	helpFragment.appendChild(title);
+	helpFragment.appendChild(warningBox);
 	helpFragment.appendChild(availableVars);
 	helpFragment.appendChild(varList);
 	helpFragment.appendChild(requirement);
+	
 	return helpFragment;
 }

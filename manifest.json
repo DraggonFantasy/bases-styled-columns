@@ -5,7 +5,6 @@
 	"minAppVersion": "0.15.0",
 	"description": "A simple plugin to add custom CSS classes to the Obsidian Bases. Note: no guarantee that this will be compatible with future versions of Obsidian",
 	"author": "Boris Varer <thedraggonfantasy>",
-	"authorUrl": "",
-	"fundingUrl": "",
+	"authorUrl": "https://github.com/draggonfantasy",
 	"isDesktopOnly": false
 }

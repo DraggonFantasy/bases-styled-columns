@@ -1,5 +1,5 @@
 import { App, debounce, Notice, TFile, Plugin, PluginSettingTab } from 'obsidian';
-import { DEFAULT_SETTINGS, BasesStyledColumnsSettings } from 'settings';
+import { DEFAULT_SETTINGS, BasesStyledColumnsSettings, ColumnConfig } from 'settings';
 import { SampleSettingTab } from 'settingsUI';
 
 
@@ -13,7 +13,7 @@ function hookIntoBase(plugin: BasesStyledColumns, containerEl: HTMLElement) {
 		debouncedDecorate();
 	});
 
-	observer.observe(containerEl, { childList: true, subtree: true, attributes: true, characterData: true, attributeFilter: ["value"] });
+	observer.observe(containerEl, { childList: true, subtree: true, characterData: true });
 
 	decorateBase(containerEl, plugin.settings);
 
@@ -23,6 +23,7 @@ function hookIntoBase(plugin: BasesStyledColumns, containerEl: HTMLElement) {
 function decorateBase(root: HTMLElement, settings: BasesStyledColumnsSettings) {
 	const timeStart = Date.now();
 
+	let jsFunctionError: null | { column: ColumnConfig, error: Error } = null;
 	settings.columns.forEach(column => {
 		// console.log(`Decorating ${column.dataProperty} with mode ${column.mode}`);
 		root.querySelectorAll(`div.bases-td[data-property='${column.dataProperty}']`).forEach((el: any) => {
@@ -52,7 +53,10 @@ function decorateBase(root: HTMLElement, settings: BasesStyledColumnsSettings) {
 					const result = func(el, value);
 					classesToAdd = Array.isArray(result) ? result : [];
 				} catch (error) {
-					new Notice(`Error in JS function for ${column.dataProperty}: ${error.message}`);
+					jsFunctionError = {
+                        column: column,
+                        error: error as Error
+					};
 					return;
 				}
 			}
@@ -66,6 +70,10 @@ function decorateBase(root: HTMLElement, settings: BasesStyledColumnsSettings) {
 			});
 		});
 	});
+
+	if(jsFunctionError !== null) {
+		new Notice(`Error in JS function for ${( jsFunctionError as any).column.dataProperty}: ${( jsFunctionError as any ).error}`);
+    }
 
 	console.log(`Bases Styled Columns: Decorated base in ${Date.now() - timeStart}ms`);
 }
