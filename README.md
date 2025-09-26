@@ -1,5 +1,5 @@
 # Bases Styled Columns
-![Demo screenshot](assets/screenshot.png)
+![Demo screenshot](assets/demo.png)
 
 A simple small Obsidian plugin for attaching custom CSS classes to the Obsidian Bases columns. It was initially created for a personal use case, but I think it could be useful for others as well.  
 
