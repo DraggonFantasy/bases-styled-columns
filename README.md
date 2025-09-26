@@ -36,6 +36,10 @@ After you have defined the classes for columns, you can just use them in your CS
 
 **Note**: The name of the property is usually called "note.<name of the property as you see in Obsidian>". So if your Obsidian property is called "fancy-column" -> you should use "note.fancy-column" in the plugin settings.
 
+## Knows bugs
+
+1. The classes are not always automatically refreshed, e.g. they are not refreshed when you edit the numeric property. You can scroll the table or edit text property or reopen the base to refresh the styles.
+
 ## Examples
 
 ### JS function configuration
