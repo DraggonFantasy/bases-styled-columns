@@ -69,6 +69,10 @@ function decorateBase(root: HTMLElement, settings: BasesStyledColumnsSettings) {
               ?.textContent?.trim();
           }
         }
+		
+		if(column.dataProperty.startsWith("formula.")) {
+          value = el.querySelector(".bases-rendered-value")?.textContent?.trim();
+        }
 
         el.classList.forEach((cls: any) => {
           if (cls.startsWith(settings.cssClassPrefix)) {
